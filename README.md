@@ -88,6 +88,12 @@ npm run watch
 
 Starts server w/hot-reloading.
 
+## GraphQL
+
+To engage with the graphql inspector, visit `/graphql` of the api server.
+
+The [staging inspector](https://omscentral-api-staging.herokuapp.com/graphql) is useful for interacting with production-like data.
+
 ## Deployment
 
 Merging to `master` initiates a deployment to the staging environment. Once verified in staging, the build is promoted to production from Heroku console.
