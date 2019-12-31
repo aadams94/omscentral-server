@@ -8,7 +8,6 @@
   "version": "0.0.0",
   "main": "dist/src/server.js",
   "scripts": {
-    "bin:elastic": "node dist/src/bin/elastic.js",
     "build": "run-s clean build:ts tslint",
     "build:ts": "tsc",
     "clean": "rimraf dist coverage",
