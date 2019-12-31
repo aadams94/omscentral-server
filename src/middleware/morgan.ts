@@ -4,7 +4,10 @@ import { RequestHandler } from 'express';
 import { appConfig, morganConfig } from '../config';
 
 export const middleware = (): RequestHandler => {
-  if (appConfig.environment === 'test') {
+  if (
+    appConfig.environment === 'test' ||
+    appConfig.environment === 'production'
+  ) {
     return (req, res, next) => next();
   }
 
