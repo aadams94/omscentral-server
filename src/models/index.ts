@@ -1,3 +1,4 @@
+export * from './Config';
 export * from './Course';
 export * from './CourseMetric';
 export * from './Domain';

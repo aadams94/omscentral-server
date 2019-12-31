@@ -5,6 +5,10 @@ import * as models from '../models';
 import mutations from './mutations';
 
 export const schema = builder()
+  .model(models.Config, {
+    listFieldName: 'configs',
+    fieldName: 'config'
+  })
   .model(models.Course, {
     listFieldName: 'courses',
     fieldName: 'course'
