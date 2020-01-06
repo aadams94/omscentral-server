@@ -42,4 +42,3 @@ _*.json
 keys/
 database/migrations/*_fill_users.ts
 database/migrations/*_fill_reviews.ts
-sitemap.txt
