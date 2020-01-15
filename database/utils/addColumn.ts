@@ -1,13 +1,5 @@
-import * as Knex from 'knex';
+import Knex from 'knex';
 
-/**
- * Adds a column to a table if it does not already exist.
- *
- * @param knex Knex instance.
- * @param tableName Name of table to update.
- * @param columnName Name of column to add.
- * @param callback Callback to invoke with table builder for updating table.
- */
 export async function addColumn(
   knex: Knex,
   tableName: string,
