@@ -1,7 +1,12 @@
 import { GraphQLFieldConfig, GraphQLNonNull } from 'graphql';
-import { badRequest } from 'boom';
+import { forbidden, badRequest } from 'boom';
 import { IRequest } from '../../middleware';
-import { reviewType, reviewInputType, IReview } from '../types';
+import {
+  reviewType,
+  reviewInputType,
+  reviewValidationType,
+  IReview
+} from '../types';
 import * as fn from '../../functions';
 
 export const insertReview: GraphQLFieldConfig<any, IRequest> = {
@@ -12,10 +17,16 @@ export const insertReview: GraphQLFieldConfig<any, IRequest> = {
       type: new GraphQLNonNull(reviewInputType)
     }
   },
-  resolve: (root, args: { review: IReview }, req) => {
+  resolve: async (root, args: { review: IReview }, req) => {
     if (args.review.author_id !== req.userId) {
-      throw badRequest();
+      throw forbidden();
     }
-    return fn.insertReview(args.review);
+
+    const { value, error } = await reviewValidationType.validate(args.review);
+    if (error) {
+      throw badRequest(error.message);
+    }
+
+    return fn.insertReview(value);
   }
 };

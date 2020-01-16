@@ -1,7 +1,7 @@
 import { GraphQLFieldConfig, GraphQLNonNull } from 'graphql';
-import { forbidden } from 'boom';
+import { forbidden, badRequest } from 'boom';
 import { IRequest } from '../../middleware';
-import { userType, userInputType, IUser } from '../types';
+import { userType, userInputType, userValidationType, IUser } from '../types';
 import * as fn from '../../functions';
 
 export const insertUser: GraphQLFieldConfig<any, IRequest> = {
@@ -12,10 +12,16 @@ export const insertUser: GraphQLFieldConfig<any, IRequest> = {
       type: new GraphQLNonNull(userInputType)
     }
   },
-  resolve: (root, args: { user: IUser }, req) => {
+  resolve: async (root, args: { user: IUser }, req) => {
     if (req.userId !== args.user.id) {
       throw forbidden();
     }
-    return fn.insertUser(args.user);
+
+    const { value, error } = await userValidationType.validate(args.user);
+    if (error) {
+      throw badRequest(error.message);
+    }
+
+    return fn.insertUser(value);
   }
 };

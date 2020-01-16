@@ -1,7 +1,12 @@
 import { GraphQLFieldConfig, GraphQLNonNull } from 'graphql';
 import { notFound, forbidden, badRequest } from 'boom';
 import { IRequest } from '../../middleware';
-import { reviewType, reviewInputType, IReview } from '../types';
+import {
+  reviewType,
+  reviewInputType,
+  reviewValidationType,
+  IReview
+} from '../types';
 import * as fn from '../../functions';
 
 export const updateReview: GraphQLFieldConfig<any, IRequest> = {
@@ -26,6 +31,11 @@ export const updateReview: GraphQLFieldConfig<any, IRequest> = {
       throw badRequest();
     }
 
-    return fn.updateReview(args.review);
+    const { value, error } = await reviewValidationType.validate(args.review);
+    if (error) {
+      throw badRequest(error.message);
+    }
+
+    return fn.updateReview(value);
   }
 };
