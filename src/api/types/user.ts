@@ -1,3 +1,4 @@
+import { object, string, number } from '@hapi/joi';
 import {
   GraphQLObjectType,
   GraphQLNonNull,
@@ -61,4 +62,15 @@ export const userType = new GraphQLObjectType({
       type: GraphQLFloat
     }
   }
+});
+
+export const userValidationType = object().keys({
+  id: string().required(),
+  auth_provider: string().valid(...Object.values(AuthProvider)),
+  email: string(),
+  name: string(),
+  photo_url: string().allow(null),
+  program_id: string().allow(null),
+  specialization_id: string().allow(null),
+  last_signed_in: number()
 });
