@@ -1,4 +1,4 @@
-name: build
+name: Build
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [13.x]
+        node-version: [12.x]
 
     env:
       CI: true
@@ -19,5 +19,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run build
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
