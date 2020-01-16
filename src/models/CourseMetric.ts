@@ -22,8 +22,8 @@ const statsSchema = {
 
 export class CourseMetric extends Domain {
   course_id: string;
-  data: {
-    review_count: number;
+  reviews: {
+    count: number;
     difficulty: IStats;
     workload: IStats;
     rating: IStats;
@@ -33,18 +33,18 @@ export class CourseMetric extends Domain {
 
   static idColumn = 'course_id';
 
-  static jsonAttributes = ['data'];
+  static jsonAttributes = ['reviews'];
 
   static jsonSchema = {
     type: 'object',
-    required: ['course_id', 'data'],
+    required: ['course_id', 'reviews'],
     properties: {
       course_id: { type: 'string' },
-      data: {
+      reviews: {
         type: 'object',
-        required: ['review_count', 'workload', 'difficulty', 'rating'],
+        required: ['count', 'workload', 'difficulty', 'rating'],
         properties: {
-          review_count: { type: 'integer' },
+          count: { type: 'integer' },
           difficulty: statsSchema,
           workload: statsSchema,
           rating: statsSchema

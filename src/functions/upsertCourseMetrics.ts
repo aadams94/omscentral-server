@@ -11,7 +11,7 @@ async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
   const metrics = await Metric.query()
     .from(Review.tableName)
     .select('course_id')
-    .select(raw(`cast(count(id) as integer) as review_count`))
+    .select(raw(`cast(count(id) as integer) as count`))
     .modify(query =>
       ['difficulty', 'workload', 'rating'].map(col =>
         query
@@ -34,7 +34,7 @@ class Metric extends Domain {
   static tableName = '_virtual';
 
   course_id: string;
-  review_count: number;
+  count: number;
   difficulty_mean: number;
   difficulty_median: number;
   difficulty_mode: number;
@@ -54,8 +54,8 @@ class Metric extends Domain {
 
 const toCourseMetric = (metric: Metric): PMO<CM> => ({
   course_id: metric.course_id,
-  data: {
-    review_count: metric.review_count,
+  reviews: {
+    count: metric.count,
     difficulty: {
       mean: metric.difficulty_mean,
       median: metric.difficulty_median,
