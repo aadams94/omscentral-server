@@ -3,8 +3,8 @@
   "description": "omscentral web server",
   "license": "ISC",
   "author": "Mehmet Bajin <mehmet.bajin@gatech.edu>",
-  "homepage": "https://github.com/mehmetbajin/omscentral-server",
-  "repository": "github:mehmetbajin/omscentral-server",
+  "homepage": "https://github.com/OMSCentral/omscentral-server",
+  "repository": "github:OMSCentral/omscentral-server",
   "version": "0.0.0",
   "main": "dist/src/server.js",
   "scripts": {
