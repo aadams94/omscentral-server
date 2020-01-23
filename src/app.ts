@@ -32,6 +32,7 @@ app.use(middleware.morgan());
 app.use(middleware.user());
 
 app.use('/graphql', middleware.graphql());
+app.use('*', (req, res) => res.status(400).send('Use /graphql endpoint.'));
 
 app.use(middleware.error());
 
