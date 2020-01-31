@@ -90,7 +90,7 @@
     "rimraf": "3.0.1",
     "supertest": "4.0.2",
     "supertest-session": "4.0.0",
-    "ts-jest": "25.0.0",
+    "ts-jest": "25.1.0",
     "ts-node": "8.6.2",
     "tslint": "6.0.0",
     "typescript": "3.7.5",
