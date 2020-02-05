@@ -26,7 +26,12 @@ async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
     .modify(query => ids.length && query.whereIn('course_id', ids))
     .groupBy('course_id');
 
-  const [metrics] = await Promise.all([fetchMetrics, CM.query().delete()]);
+  const [metrics] = await Promise.all([
+    fetchMetrics,
+    CM.query()
+      .delete()
+      .modify(query => ids.length && query.whereIn('course_id', ids))
+  ]);
 
   return CM.query().upsertGraphAndFetch(metrics.map(toCourseMetric), {
     insertMissing: true
