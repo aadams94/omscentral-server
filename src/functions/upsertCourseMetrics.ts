@@ -8,7 +8,8 @@ async function upsertCourseMetrics(id: string): Promise<CM[]>;
 async function upsertCourseMetrics(ids: string[]): Promise<CM[]>;
 async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
   const ids = [].concat(idOrIds).filter(Boolean);
-  const metrics = await Metric.query()
+
+  const fetchMetrics = Metric.query()
     .from(Review.tableName)
     .select('course_id')
     .select(raw(`cast(count(id) as integer) as count`))
@@ -24,6 +25,8 @@ async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
     )
     .modify(query => ids.length && query.whereIn('course_id', ids))
     .groupBy('course_id');
+
+  const [metrics] = await Promise.all([fetchMetrics, CM.query().delete()]);
 
   return CM.query().upsertGraphAndFetch(metrics.map(toCourseMetric), {
     insertMissing: true
