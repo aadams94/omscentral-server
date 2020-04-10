@@ -52,7 +52,7 @@
     "objection-db-errors": "1.1.2",
     "objection-graphql": "0.4.5",
     "objection-visibility": "1.0.0",
-    "pg": "7.18.2",
+    "pg": "8.0.2",
     "request": "2.88.2",
     "request-promise": "4.2.5",
     "winston": "3.2.1"
