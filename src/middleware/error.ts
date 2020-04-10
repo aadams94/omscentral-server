@@ -17,9 +17,10 @@ export const middleware = (): ErrorRequestHandler => (
   return res.status(output.statusCode).json({
     ...output.payload,
     stack:
-      appConfig.environment !== 'production'
+      appConfig.environment !== 'production' &&
+      appConfig.environment !== 'staging'
         ? (error.stack || '').split(/\n\s+/g)
-        : undefined
+        : undefined,
   });
 };
 
@@ -27,5 +28,5 @@ const parseError = (error: Error | Boom | any): Boom =>
   error instanceof Boom
     ? error
     : Boom.boomify(new Error(error), {
-        statusCode: error.status || error.statusCode || 500
+        statusCode: error.status || error.statusCode || 500,
       });
