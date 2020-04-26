@@ -3,10 +3,8 @@ import { createTable, dropTable } from '../utils';
 import { Review, User, Course, Semester } from '../../src/models';
 
 exports.up = async (knex: Knex) => {
-  await createTable(knex, Review.tableName, tb => {
-    tb.string('id')
-      .notNullable()
-      .primary();
+  await createTable(knex, Review.tableName, (tb) => {
+    tb.string('id').notNullable().primary();
 
     tb.string('author_id')
       .notNullable()
@@ -29,17 +27,11 @@ exports.up = async (knex: Knex) => {
       .index(`index_${Review.tableName}_semester_id`)
       .onDelete('CASCADE');
 
-    tb.integer('difficulty')
-      .unsigned()
-      .nullable();
+    tb.integer('difficulty').unsigned().nullable();
 
-    tb.integer('rating')
-      .unsigned()
-      .nullable();
+    tb.integer('rating').unsigned().nullable();
 
-    tb.decimal('workload')
-      .unsigned()
-      .nullable();
+    tb.decimal('workload').unsigned().nullable();
 
     tb.text('body').nullable();
     tb.jsonb('meta').nullable();

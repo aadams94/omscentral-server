@@ -5,16 +5,16 @@ export const programs: PMO<Program>[] = [
   {
     id: 'compsci',
     name: 'Computer Science',
-    url: 'https://pe.gatech.edu/degrees/computer-science'
+    url: 'https://pe.gatech.edu/degrees/computer-science',
   },
   {
     id: 'cybersec',
     name: 'Cybersecurity',
-    url: 'https://pe.gatech.edu/degrees/cybersecurity'
+    url: 'https://pe.gatech.edu/degrees/cybersecurity',
   },
   {
     id: 'analytics',
     name: 'Analytics',
-    url: 'https://pe.gatech.edu/degrees/analytics'
-  }
+    url: 'https://pe.gatech.edu/degrees/analytics',
+  },
 ];

@@ -3,10 +3,8 @@ import { createTable, dropTable } from '../utils';
 import { Semester } from '../../src/models';
 
 exports.up = async (knex: Knex) => {
-  await createTable(knex, Semester.tableName, tb => {
-    tb.string('id')
-      .notNullable()
-      .primary();
+  await createTable(knex, Semester.tableName, (tb) => {
+    tb.string('id').notNullable().primary();
 
     tb.integer('year').notNullable();
     tb.integer('season').notNullable();

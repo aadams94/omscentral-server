@@ -1,7 +1,6 @@
 import { notFound } from 'boom';
 import { Review } from '../models';
-import { parallelize } from '../utils';
-import { upsertReviewCourseMetrics, unindexReview } from './utils';
+import { upsertReviewCourseMetrics } from './utils';
 import { getReview } from './getReview';
 
 export const deleteReview = async (id: string): Promise<Review> => {
@@ -11,6 +10,7 @@ export const deleteReview = async (id: string): Promise<Review> => {
   }
 
   await Review.query().deleteById(id);
+  await upsertReviewCourseMetrics(review);
 
-  return parallelize(upsertReviewCourseMetrics, unindexReview)(review);
+  return review;
 };

@@ -10,7 +10,6 @@ Node.js express server serving `@omscentral/client`.
 - [objection](https://vincit.github.io/objection.js/)
 - [graphql-js](https://github.com/graphql/graphql-js)
 - [firebase](https://firebase.google.com/)
-- [elastic-app-search](https://www.elastic.co/products/app-search) (future)
 
 ## Getting Started
 
@@ -47,26 +46,22 @@ Next, from the "Settings" > "Service accounts" tab of your Firebase project, cli
 
 Then, complete `.env` based on the following expectations:
 
-| variable                           | description                                                                         |
-| ---------------------------------- | ----------------------------------------------------------------------------------- |
-| NODE_ENV                           | `"local" | "test" | "staging" | "production"` (recommend `"local"`)                 |
-| PORT                               | port expected by `@omscentral/client`                                               |
-| OMSCENTRAL_NAME                    | human-readable instance name for logging                                            |
-| OMSCENTRAL_MORGAN_FORMAT           | predefined [morgan format](https://www.npmjs.com/package/morgan#predefined-formats) |
-| OMSCENTRAL_GRAPHQL_INSPECTOR       | whether graphql inspector is enabled (`1`-enabled, `undefined`-disabled)            |
-| OMSCENTRAL_CORS_WHITELIST          | comma-delimited list of hostnames exempt from CORS check                            |
-| OMSCENTRAL_SESSION_SECRET          | value used to sign session cookie                                                   |
-| OMSCENTRAL_SESSION_MAX_AGE         | # of hours after which session cookie expires                                       |
-| OMSCENTRAL_SESSION_CLEAR_INTERVAL  | frequency (in hours) for session cookie garbage collection                          |
-| OMSCENTRAL_FIREBASE_PRIVATE_KEY    | from firebase private key json                                                      |
-| OMSCENTRAL_FIREBASE_CLIENT_EMAIL   | from firebase private key json                                                      |
-| OMSCENTRAL_FIREBASE_PROJECT_ID     | from firebase private key json                                                      |
-| OMSCENTRAL_FIREBASE_DATABASE_URL   | from firebase private key json                                                      |
-| OMSCENTRAL_POSTGRES_CONNECTION     | postgres connection string                                                          |
-| OMSCENTRAL_ELASTIC_ENABLED         | whether elastic app search is enabled (`1`-enabled, `undefined`-disabled)           |
-| OMSCENTRAL_ELASTIC_HOST_IDENTIFIER | elastic app search host identifier                                                  |
-| OMSCENTRAL_ELASTIC_API_KEY         | elastic app search api key                                                          |
-| OMSCENTRAL_ELASTIC_ENGINE_NAME     | elastic app search engine name                                                      |
+| variable                          | description                                                                         |
+| --------------------------------- | ----------------------------------------------------------------------------------- |
+| NODE_ENV                          | `"local" | "test" | "staging" | "production"` (recommend `"local"`)                 |
+| PORT                              | port expected by `@omscentral/client`                                               |
+| OMSCENTRAL_NAME                   | human-readable instance name for logging                                            |
+| OMSCENTRAL_MORGAN_FORMAT          | predefined [morgan format](https://www.npmjs.com/package/morgan#predefined-formats) |
+| OMSCENTRAL_GRAPHQL_INSPECTOR      | whether graphql inspector is enabled (`1`-enabled, `undefined`-disabled)            |
+| OMSCENTRAL_CORS_WHITELIST         | comma-delimited list of hostnames exempt from CORS check                            |
+| OMSCENTRAL_SESSION_SECRET         | value used to sign session cookie                                                   |
+| OMSCENTRAL_SESSION_MAX_AGE        | # of hours after which session cookie expires                                       |
+| OMSCENTRAL_SESSION_CLEAR_INTERVAL | frequency (in hours) for session cookie garbage collection                          |
+| OMSCENTRAL_FIREBASE_PRIVATE_KEY   | from firebase private key json                                                      |
+| OMSCENTRAL_FIREBASE_CLIENT_EMAIL  | from firebase private key json                                                      |
+| OMSCENTRAL_FIREBASE_PROJECT_ID    | from firebase private key json                                                      |
+| OMSCENTRAL_FIREBASE_DATABASE_URL  | from firebase private key json                                                      |
+| OMSCENTRAL_POSTGRES_CONNECTION    | postgres connection string                                                          |
 
 Note that when `NODE_ENV` is not `"production"`, CORS check is skipped and `OMSCENTRAL_CORS_WHITELIST` is ignored.
 

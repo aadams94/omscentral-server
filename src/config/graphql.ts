@@ -3,5 +3,5 @@ export interface IGraphQLConfig {
 }
 
 export const config: IGraphQLConfig = {
-  inspector: Boolean(process.env.OMSCENTRAL_GRAPHQL_INSPECTOR)
+  inspector: Boolean(process.env.OMSCENTRAL_GRAPHQL_INSPECTOR),
 };

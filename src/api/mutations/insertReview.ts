@@ -5,7 +5,7 @@ import {
   reviewType,
   reviewInputType,
   reviewValidationType,
-  IReview
+  IReview,
 } from '../types';
 import * as fn from '../../functions';
 
@@ -14,8 +14,8 @@ export const insertReview: GraphQLFieldConfig<any, IRequest> = {
   type: new GraphQLNonNull(reviewType),
   args: {
     review: {
-      type: new GraphQLNonNull(reviewInputType)
-    }
+      type: new GraphQLNonNull(reviewInputType),
+    },
   },
   resolve: async (root, args: { review: IReview }, req) => {
     if (args.review.author_id !== req.userId) {
@@ -28,5 +28,5 @@ export const insertReview: GraphQLFieldConfig<any, IRequest> = {
     }
 
     return fn.insertReview(value);
-  }
+  },
 };

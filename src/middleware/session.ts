@@ -16,7 +16,7 @@ export const middleware = (): RequestHandler => {
     tablename: 'omscentral_session',
     sidfieldname: 'id',
     createtable: false,
-    clearInterval: sessionConfig.clearInterval
+    clearInterval: sessionConfig.clearInterval,
   });
 
   return session({
@@ -25,7 +25,7 @@ export const middleware = (): RequestHandler => {
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: sessionConfig.maxAge
-    }
+      maxAge: sessionConfig.maxAge,
+    },
   });
 };

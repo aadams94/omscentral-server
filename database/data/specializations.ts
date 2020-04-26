@@ -18,13 +18,13 @@ export const specializations: PMO<Specialization>[] = [
           'CS-6550',
           'CS-7520',
           'CS-7530',
-          'CSE-6140'
-        ]
+          'CSE-6140',
+        ],
       },
       {
         type: 'core',
         count: 1,
-        courses: ['CS-6601', 'CS-7641']
+        courses: ['CS-6601', 'CS-7641'],
       },
       {
         type: 'elective',
@@ -39,20 +39,20 @@ export const specializations: PMO<Specialization>[] = [
           'CS-7631',
           'CS-7633',
           'CS-7638',
-          'CS-7649'
-        ]
+          'CS-7649',
+        ],
       },
       {
         type: 'elective',
         count: 1,
-        courses: ['CS-6475', 'CS-6476', 'CS-7499', 'CS-7636', 'CS-7650']
+        courses: ['CS-6475', 'CS-6476', 'CS-7499', 'CS-7636', 'CS-7650'],
       },
       {
         type: 'elective',
         count: 1,
-        courses: ['CS-7630', 'CS-7631', 'CS-7633', 'CS-7638', 'CS-7649']
-      }
-    ]
+        courses: ['CS-7630', 'CS-7631', 'CS-7633', 'CS-7638', 'CS-7649'],
+      },
+    ],
   },
   // https://www.omscs.gatech.edu/specialization-computing-systems
   {
@@ -63,7 +63,7 @@ export const specializations: PMO<Specialization>[] = [
       {
         type: 'core',
         count: 1,
-        courses: ['CS-6505', 'CS-6515']
+        courses: ['CS-6505', 'CS-6515'],
       },
       {
         type: 'core',
@@ -75,8 +75,8 @@ export const specializations: PMO<Specialization>[] = [
           'CS-6290',
           'CS-6300',
           'CS-6390',
-          'CS-6400'
-        ]
+          'CS-6400',
+        ],
       },
       {
         type: 'elective',
@@ -104,10 +104,10 @@ export const specializations: PMO<Specialization>[] = [
           'CS-7292',
           'CS-7560',
           'CS-8803-FPL',
-          'CSE-6220'
-        ]
-      }
-    ]
+          'CSE-6220',
+        ],
+      },
+    ],
   },
   // https://www.omscs.gatech.edu/specialization-interactive-intelligence
   {
@@ -118,12 +118,12 @@ export const specializations: PMO<Specialization>[] = [
       {
         type: 'core',
         count: 1,
-        courses: ['CS-6300', 'CS-6301', 'CS-6505', 'CS-6515']
+        courses: ['CS-6300', 'CS-6301', 'CS-6505', 'CS-6515'],
       },
       {
         type: 'core',
         count: 2,
-        courses: ['CS-6601', 'CS-7620', 'CS-7637', 'CS-7641']
+        courses: ['CS-6601', 'CS-7620', 'CS-7637', 'CS-7641'],
       },
       {
         type: 'elective',
@@ -138,10 +138,10 @@ export const specializations: PMO<Specialization>[] = [
           'CS-7634',
           'CS-7650',
           'CS-6795',
-          'CS-7610'
-        ]
-      }
-    ]
+          'CS-7610',
+        ],
+      },
+    ],
   },
   // https://www.omscs.gatech.edu/specialization-machine-learning
   {
@@ -160,13 +160,13 @@ export const specializations: PMO<Specialization>[] = [
           'CS-7510',
           'CS-7520',
           'CS-7530',
-          'CSE-6140'
-        ]
+          'CSE-6140',
+        ],
       },
       {
         type: 'core',
         count: 1,
-        courses: ['CS-7641', 'CSE-6740']
+        courses: ['CS-7641', 'CSE-6740'],
       },
       {
         type: 'elective',
@@ -189,47 +189,47 @@ export const specializations: PMO<Specialization>[] = [
           'CSE-6250',
           'ISYE-6416',
           'ISYE-6420',
-          'ISYE-6664'
-        ]
-      }
-    ]
+          'ISYE-6664',
+        ],
+      },
+    ],
   },
   // https://pe.gatech.edu/degrees/cybersecurity?section=curriculum
   {
     id: 'cybersec:IS',
     program_id: 'cybersec',
     name: 'Information Security',
-    requirements: []
+    requirements: [],
   },
   {
     id: 'cybersec:ES',
     program_id: 'cybersec',
     name: 'Energy Systems',
-    requirements: []
+    requirements: [],
   },
   {
     id: 'cybersec:p',
     program_id: 'cybersec',
     name: 'Policy',
-    requirements: []
+    requirements: [],
   },
   // https://pe.gatech.edu/degrees/analytics?section=curriculum
   {
     id: 'analytics:at',
     program_id: 'analytics',
     name: 'Analytical Tools',
-    requirements: []
+    requirements: [],
   },
   {
     id: 'analytics:ba',
     program_id: 'analytics',
     name: 'Business Analytics',
-    requirements: []
+    requirements: [],
   },
   {
     id: 'analytics:cda',
     program_id: 'analytics',
     name: 'Computational Data Analytics',
-    requirements: []
-  }
+    requirements: [],
+  },
 ];

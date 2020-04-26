@@ -16,11 +16,11 @@ const config: Config = {
   connection: postgresConfig.connection,
   migrations: {
     directory: path.join(__dirname, 'migrations'),
-    tableName: Migration.tableName
+    tableName: Migration.tableName,
   },
   seeds: {
-    directory: path.join(__dirname, 'seeds')
-  }
+    directory: path.join(__dirname, 'seeds'),
+  },
 };
 
 export default module.exports = config;

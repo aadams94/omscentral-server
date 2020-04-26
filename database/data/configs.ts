@@ -5,10 +5,10 @@ import { privacy, terms } from '../constants';
 export const configs: PMO<Config>[] = [
   {
     id: 'privacy',
-    value: privacy
+    value: privacy,
   },
   {
     id: 'terms',
-    value: terms
-  }
+    value: terms,
+  },
 ];

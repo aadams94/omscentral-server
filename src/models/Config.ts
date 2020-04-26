@@ -11,7 +11,7 @@ export class Config extends Domain {
     required: ['id', 'value'],
     properties: {
       id: { type: 'string' },
-      value: { type: 'string' }
-    }
+      value: { type: 'string' },
+    },
   };
 }

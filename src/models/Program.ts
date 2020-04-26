@@ -13,7 +13,7 @@ export class Program extends Domain {
     properties: {
       id: { type: 'string' },
       name: { type: 'string' },
-      url: { type: 'string' }
-    }
+      url: { type: 'string' },
+    },
   };
 }

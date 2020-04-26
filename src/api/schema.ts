@@ -7,41 +7,41 @@ import mutations from './mutations';
 export const schema = builder()
   .model(models.Config, {
     listFieldName: 'configs',
-    fieldName: 'config'
+    fieldName: 'config',
   })
   .model(models.Course, {
     listFieldName: 'courses',
-    fieldName: 'course'
+    fieldName: 'course',
   })
   .model(models.Program, {
     listFieldName: 'programs',
-    fieldName: 'program'
+    fieldName: 'program',
   })
   .model(models.Review, {
     listFieldName: 'reviews',
-    fieldName: 'review'
+    fieldName: 'review',
   })
   .model(models.Semester, {
     listFieldName: 'semesters',
-    fieldName: 'semester'
+    fieldName: 'semester',
   })
   .model(models.Specialization, {
     listFieldName: 'specializations',
-    fieldName: 'specialization'
+    fieldName: 'specialization',
   })
   .model(models.User, {
     listFieldName: 'users',
-    fieldName: 'user'
+    fieldName: 'user',
   })
   .extendWithMutations(mutations)
   .argFactory(() => ({
     orderByToo: {
       type: GraphQLString,
-      query: (query: QB<any>, value: any) => query.orderBy(value)
+      query: (query: QB<any>, value: any) => query.orderBy(value),
     },
     orderByDescToo: {
       type: GraphQLString,
-      query: (query: QB<any>, value: any) => query.orderBy(value, 'desc')
-    }
+      query: (query: QB<any>, value: any) => query.orderBy(value, 'desc'),
+    },
   }))
   .build();

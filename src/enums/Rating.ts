@@ -3,5 +3,5 @@ export enum Rating {
   Disliked = 2,
   Neutral = 3,
   Liked = 4,
-  StronglyLiked = 5
+  StronglyLiked = 5,
 }

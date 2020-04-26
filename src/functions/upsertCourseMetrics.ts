@@ -13,8 +13,8 @@ async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
     .from(Review.tableName)
     .select('course_id')
     .select(raw(`cast(count(id) as integer) as count`))
-    .modify(query =>
-      ['difficulty', 'workload', 'rating'].map(col =>
+    .modify((query) =>
+      ['difficulty', 'workload', 'rating'].map((col) =>
         query
           .select(raw(`avg(${col}) as ${col}_mean`))
           .select(raw(`median(${col}) as ${col}_median`))
@@ -23,18 +23,18 @@ async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
           .select(raw(`max(${col}) as ${col}_max`))
       )
     )
-    .modify(query => ids.length && query.whereIn('course_id', ids))
+    .modify((query) => ids.length && query.whereIn('course_id', ids))
     .groupBy('course_id');
 
   const [metrics] = await Promise.all([
     fetchMetrics,
     CM.query()
       .delete()
-      .modify(query => ids.length && query.whereIn('course_id', ids))
+      .modify((query) => ids.length && query.whereIn('course_id', ids)),
   ]);
 
   return CM.query().upsertGraphAndFetch(metrics.map(toCourseMetric), {
-    insertMissing: true
+    insertMissing: true,
   });
 }
 
@@ -69,21 +69,21 @@ const toCourseMetric = (metric: Metric): PMO<CM> => ({
       median: metric.difficulty_median,
       mode: metric.difficulty_mode,
       min: metric.difficulty_min,
-      max: metric.difficulty_max
+      max: metric.difficulty_max,
     },
     workload: {
       mean: metric.workload_mean,
       median: metric.workload_median,
       mode: metric.workload_mode,
       min: metric.workload_min,
-      max: metric.workload_max
+      max: metric.workload_max,
     },
     rating: {
       mean: metric.rating_mean,
       median: metric.rating_median,
       mode: metric.rating_mode,
       min: metric.rating_min,
-      max: metric.rating_max
-    }
-  }
+      max: metric.rating_max,
+    },
+  },
 });

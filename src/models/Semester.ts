@@ -16,7 +16,7 @@ export class Semester extends Domain {
       id: { type: 'string' },
       year: { type: 'integer' },
       season: { type: 'integer' },
-      name: { type: 'string' }
-    }
+      name: { type: 'string' },
+    },
   };
 }

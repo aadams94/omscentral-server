@@ -3,10 +3,8 @@ import { createTable, dropTable } from '../utils';
 import { Session } from '../../src/models';
 
 exports.up = async (knex: Knex) => {
-  await createTable(knex, Session.tableName, tb => {
-    tb.string('id')
-      .notNullable()
-      .primary();
+  await createTable(knex, Session.tableName, (tb) => {
+    tb.string('id').notNullable().primary();
 
     tb.json('sess').notNullable();
 

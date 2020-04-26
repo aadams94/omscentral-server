@@ -10,7 +10,7 @@ export const phase: PhaseFunction = (app, next) => {
     process.exit(1);
   });
 
-  process.on('SIGTERM', signal => {
+  process.on('SIGTERM', (signal) => {
     logger.debug('process(SIGTERM):', signal);
     process.exit(0);
   });

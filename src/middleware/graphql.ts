@@ -7,5 +7,5 @@ export const middleware = (): RequestHandler =>
   graphqlHttp({
     schema,
     rootValue,
-    graphiql: graphqlConfig.inspector
+    graphiql: graphqlConfig.inspector,
   });

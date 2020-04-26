@@ -8,11 +8,11 @@ export const insertUser = async (user: PMO<User>): Promise<User> => {
   if (existing) {
     return updateUser({
       ...user,
-      name: existing.name || user.name
+      name: existing.name || user.name,
     });
   }
   return User.query().insertAndFetch({
     ...user,
-    role: Role.Basic
+    role: Role.Basic,
   });
 };

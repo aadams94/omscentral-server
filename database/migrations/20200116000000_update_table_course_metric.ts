@@ -6,10 +6,10 @@ exports.up = async (knex: Knex) => {
   CourseMetric.knex(knex);
   await CourseMetric.query().delete();
   await dropColumn(knex, CourseMetric.tableName, 'data');
-  await addColumn(knex, CourseMetric.tableName, 'reviews', tb => {
+  await addColumn(knex, CourseMetric.tableName, 'reviews', (tb) => {
     tb.jsonb('reviews').notNullable();
   });
-  await addColumn(knex, CourseMetric.tableName, 'reviews', tb => {
+  await addColumn(knex, CourseMetric.tableName, 'reviews', (tb) => {
     tb.jsonb('grades').nullable();
   });
 };

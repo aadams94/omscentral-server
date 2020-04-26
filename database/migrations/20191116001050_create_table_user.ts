@@ -4,10 +4,8 @@ import { User, Program, Specialization } from '../../src/models';
 import { AuthProvider, Role } from '../../src/enums';
 
 exports.up = async (knex: Knex) => {
-  await createTable(knex, User.tableName, tb => {
-    tb.string('id')
-      .notNullable()
-      .primary();
+  await createTable(knex, User.tableName, (tb) => {
+    tb.string('id').notNullable().primary();
 
     tb.enu('auth_provider', Object.values(AuthProvider)).notNullable();
     tb.text('password_hash').nullable();
@@ -31,9 +29,7 @@ exports.up = async (knex: Knex) => {
       .index(`index_${User.tableName}_specialization_id`)
       .onDelete('CASCADE');
 
-    tb.boolean('anonymous')
-      .notNullable()
-      .defaultTo(true);
+    tb.boolean('anonymous').notNullable().defaultTo(true);
 
     tb.bigInteger('last_signed_in').nullable();
 

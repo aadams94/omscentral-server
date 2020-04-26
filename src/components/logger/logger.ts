@@ -4,12 +4,12 @@ const logger = createLogger({
   level: 'info',
   format: format.combine(
     format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss'
+      format: 'YYYY-MM-DD HH:mm:ss',
     }),
     format.errors({ stack: true }),
     format.splat(),
     format.json()
-  )
+  ),
   // defaultMeta: {
   //   service: appConfig.name
   // },
@@ -21,7 +21,7 @@ const logger = createLogger({
 
 logger.add(
   new transports.Console({
-    format: format.combine(format.colorize(), format.simple())
+    format: format.combine(format.colorize(), format.simple()),
   })
 );
 

@@ -4,5 +4,5 @@ export enum AuthProvider {
   Github = 'github.com',
   Google = 'google.com',
   Password = 'password',
-  Twitter = 'twitter.com'
+  Twitter = 'twitter.com',
 }

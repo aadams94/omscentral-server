@@ -9,8 +9,8 @@ export const updateUser: GraphQLFieldConfig<any, IRequest> = {
   type: new GraphQLNonNull(userType),
   args: {
     user: {
-      type: new GraphQLNonNull(userInputType)
-    }
+      type: new GraphQLNonNull(userInputType),
+    },
   },
   resolve: async (root, args: { user: IUser }, req) => {
     if (req.userId !== args.user.id) {
@@ -23,5 +23,5 @@ export const updateUser: GraphQLFieldConfig<any, IRequest> = {
     }
 
     return fn.updateUser(value);
-  }
+  },
 };

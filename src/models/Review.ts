@@ -37,25 +37,25 @@ export class Review extends withDates(Domain) {
       modelClass: User,
       join: {
         from: `${Review.tableName}.author_id`,
-        to: `${User.tableName}.id`
-      }
+        to: `${User.tableName}.id`,
+      },
     },
     course: {
       relation: Domain.BelongsToOneRelation,
       modelClass: Course,
       join: {
         from: `${Review.tableName}.course_id`,
-        to: `${Course.tableName}.id`
-      }
+        to: `${Course.tableName}.id`,
+      },
     },
     semester: {
       relation: Domain.BelongsToOneRelation,
       modelClass: Semester,
       join: {
         from: `${Review.tableName}.semester_id`,
-        to: `${Semester.tableName}.id`
-      }
-    }
+        to: `${Semester.tableName}.id`,
+      },
+    },
   };
 
   static jsonAttributes = ['meta'];
@@ -76,7 +76,7 @@ export class Review extends withDates(Domain) {
       workload: { type: ['number', 'null'], minimum: 0 },
       body: { type: ['string', 'null'] },
       created: { type: 'number' },
-      updated: { type: ['number', 'null'] }
-    }
+      updated: { type: ['number', 'null'] },
+    },
   };
 }

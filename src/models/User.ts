@@ -28,17 +28,17 @@ export class User extends withDates(Domain) {
       modelClass: Program,
       join: {
         from: `${User.tableName}.program_id`,
-        to: `${Program.tableName}.id`
-      }
+        to: `${Program.tableName}.id`,
+      },
     },
     specialization: {
       relation: Domain.HasOneRelation,
       modelClass: Specialization,
       join: {
         from: `${User.tableName}.specialization_id`,
-        to: `${Specialization.tableName}.id`
-      }
-    }
+        to: `${Specialization.tableName}.id`,
+      },
+    },
   };
 
   static jsonSchema = {
@@ -60,7 +60,7 @@ export class User extends withDates(Domain) {
       specialization: Specialization.jsonSchema,
       last_signed_in: { type: ['number', 'null'] },
       created: { type: 'number' },
-      updated: { type: ['number', 'null'] }
-    }
+      updated: { type: ['number', 'null'] },
+    },
   };
 }

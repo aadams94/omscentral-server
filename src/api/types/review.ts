@@ -5,7 +5,7 @@ import {
   GraphQLString,
   GraphQLInputObjectType,
   GraphQLInt,
-  GraphQLFloat
+  GraphQLFloat,
 } from 'graphql';
 
 export interface IReview {
@@ -21,34 +21,34 @@ export interface IReview {
 
 const reviewFields = {
   id: {
-    type: new GraphQLNonNull(GraphQLString)
+    type: new GraphQLNonNull(GraphQLString),
   },
   author_id: {
-    type: new GraphQLNonNull(GraphQLString)
+    type: new GraphQLNonNull(GraphQLString),
   },
   course_id: {
-    type: new GraphQLNonNull(GraphQLString)
+    type: new GraphQLNonNull(GraphQLString),
   },
   semester_id: {
-    type: new GraphQLNonNull(GraphQLString)
+    type: new GraphQLNonNull(GraphQLString),
   },
   difficulty: {
-    type: new GraphQLNonNull(GraphQLInt)
+    type: new GraphQLNonNull(GraphQLInt),
   },
   rating: {
-    type: new GraphQLNonNull(GraphQLInt)
+    type: new GraphQLNonNull(GraphQLInt),
   },
   workload: {
-    type: new GraphQLNonNull(GraphQLInt)
+    type: new GraphQLNonNull(GraphQLInt),
   },
   body: {
-    type: new GraphQLNonNull(GraphQLString)
-  }
+    type: new GraphQLNonNull(GraphQLString),
+  },
 };
 
 export const reviewInputType = new GraphQLInputObjectType({
   name: 'ReviewInputType',
-  fields: reviewFields
+  fields: reviewFields,
 });
 
 export const reviewType = new GraphQLObjectType({
@@ -56,12 +56,12 @@ export const reviewType = new GraphQLObjectType({
   fields: {
     ...reviewFields,
     created: {
-      type: new GraphQLNonNull(GraphQLFloat)
+      type: new GraphQLNonNull(GraphQLFloat),
     },
     updated: {
-      type: GraphQLFloat
-    }
-  }
+      type: GraphQLFloat,
+    },
+  },
 });
 
 export const reviewValidationType = object().keys({
@@ -69,20 +69,8 @@ export const reviewValidationType = object().keys({
   author_id: string().required(),
   course_id: string().required(),
   semester_id: string().required(),
-  difficulty: number()
-    .min(1)
-    .max(5)
-    .integer()
-    .required(),
-  rating: number()
-    .min(1)
-    .max(5)
-    .integer()
-    .required(),
-  workload: number()
-    .min(1)
-    .max(100)
-    .integer()
-    .required(),
-  body: string().required()
+  difficulty: number().min(1).max(5).integer().required(),
+  rating: number().min(1).max(5).integer().required(),
+  workload: number().min(1).max(100).integer().required(),
+  body: string().required(),
 });

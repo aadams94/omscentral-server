@@ -3,10 +3,8 @@ import { createTable, dropTable } from '../utils';
 import { Program } from '../../src/models';
 
 exports.up = async (knex: Knex) => {
-  await createTable(knex, Program.tableName, tb => {
-    tb.string('id')
-      .notNullable()
-      .primary();
+  await createTable(knex, Program.tableName, (tb) => {
+    tb.string('id').notNullable().primary();
 
     tb.text('name').notNullable();
     tb.text('url').notNullable();

@@ -6,7 +6,7 @@ import { postgresConfig } from '../config';
 export const phase: PhaseFunction = (app, next) => {
   const knexConfig: Config = {
     client: 'pg',
-    connection: postgresConfig.connection
+    connection: postgresConfig.connection,
   };
 
   Model.knex(knex(knexConfig));

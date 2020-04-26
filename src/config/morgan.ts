@@ -10,5 +10,5 @@ export interface IMorganConfig {
 }
 
 export const config: IMorganConfig = {
-  format: (process.env.OMSCENTRAL_MORGAN_FORMAT || 'dev') as Format
+  format: (process.env.OMSCENTRAL_MORGAN_FORMAT || 'dev') as Format,
 };

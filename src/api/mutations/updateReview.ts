@@ -5,7 +5,7 @@ import {
   reviewType,
   reviewInputType,
   reviewValidationType,
-  IReview
+  IReview,
 } from '../types';
 import * as fn from '../../functions';
 
@@ -14,8 +14,8 @@ export const updateReview: GraphQLFieldConfig<any, IRequest> = {
   type: new GraphQLNonNull(reviewType),
   args: {
     review: {
-      type: new GraphQLNonNull(reviewInputType)
-    }
+      type: new GraphQLNonNull(reviewInputType),
+    },
   },
   resolve: async (root, args: { review: IReview }, req) => {
     const review = await fn.getReview(args.review.id).select('author_id');
@@ -37,5 +37,5 @@ export const updateReview: GraphQLFieldConfig<any, IRequest> = {
     }
 
     return fn.updateReview(value);
-  }
+  },
 };

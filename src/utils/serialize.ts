@@ -7,7 +7,7 @@ export const serialize: <T>(
   size?: number,
   timeout?: number
 ) => Promise<any> = (values, operation, size = 1000, timeout = 0) =>
-  mapSeries(chunk(values, size), async chunk => {
+  mapSeries(chunk(values, size), async (chunk) => {
     await operation(chunk);
-    timeout && (await new Promise(resolve => setTimeout(resolve, timeout)));
+    timeout && (await new Promise((resolve) => setTimeout(resolve, timeout)));
   });

@@ -16,6 +16,6 @@ export const withBootable = (app: Application, logger?: ILogger): IBootable => {
 
   return assign(app, {
     boot,
-    phase
+    phase,
   });
 };

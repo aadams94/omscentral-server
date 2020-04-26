@@ -28,5 +28,5 @@ export const config: ISessionConfig = {
   maxAge: hourToMs(Number(process.env.OMSCENTRAL_SESSION_MAX_AGE) || 8),
   clearInterval: hourToMs(
     Number(process.env.OMSCENTRAL_SESSION_CLEAR_INTERVAL) || 1
-  )
+  ),
 };

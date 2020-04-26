@@ -18,12 +18,12 @@ const getSeasonDisplayName = memoize((season: Season): string => {
 });
 
 export const semesters: PMO<Semester>[] = chain(range(2014, 2021))
-  .map(year =>
-    [Season.Spring, Season.Summer, Season.Fall].map(season => ({
+  .map((year) =>
+    [Season.Spring, Season.Summer, Season.Fall].map((season) => ({
       id: `${year}-${season}`,
       year,
       season,
-      name: `${getSeasonDisplayName(season)} ${year}`
+      name: `${getSeasonDisplayName(season)} ${year}`,
     }))
   )
   .flatten()

@@ -24,7 +24,7 @@ export const withDates = (ModelToDecorate: typeof Model) =>
       return {
         ...json,
         created: Number(json.created),
-        updated: json.updated && Number(json.updated)
+        updated: json.updated && Number(json.updated),
       };
     }
   };

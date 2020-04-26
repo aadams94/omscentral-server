@@ -16,8 +16,8 @@ const statsSchema = {
     median: { type: 'number' },
     mode: { type: 'number' },
     min: { type: 'number' },
-    max: { type: 'number' }
-  }
+    max: { type: 'number' },
+  },
 };
 
 export class CourseMetric extends Domain {
@@ -47,9 +47,9 @@ export class CourseMetric extends Domain {
           count: { type: 'integer' },
           difficulty: statsSchema,
           workload: statsSchema,
-          rating: statsSchema
-        }
-      }
-    }
+          rating: statsSchema,
+        },
+      },
+    },
   };
 }

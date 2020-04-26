@@ -10,7 +10,7 @@ export default module.exports = (file: string = '.env') => {
         '..',
         __dirname.includes('dist/') ? '..' : '',
         file
-      )
+      ),
     })
   );
 };

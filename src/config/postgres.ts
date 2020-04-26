@@ -4,5 +4,5 @@ export interface IPostgresConfig {
 
 export const config: IPostgresConfig = {
   connection:
-    process.env.OMSCENTRAL_POSTGRES_CONNECTION || process.env.DATABASE_URL
+    process.env.OMSCENTRAL_POSTGRES_CONNECTION || process.env.DATABASE_URL,
 };

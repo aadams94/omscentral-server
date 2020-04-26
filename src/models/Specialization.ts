@@ -20,9 +20,9 @@ export class Specialization extends Domain {
       modelClass: Program,
       join: {
         from: `${Specialization.tableName}.program_id`,
-        to: `${Program.tableName}.id`
-      }
-    }
+        to: `${Program.tableName}.id`,
+      },
+    },
   };
 
   static jsonAttributes = ['requirements'];
@@ -43,10 +43,10 @@ export class Specialization extends Domain {
           properties: {
             type: { type: 'string' },
             count: { type: 'integer' },
-            courses: { type: 'array', items: { type: 'string' } }
-          }
-        }
-      }
-    }
+            courses: { type: 'array', items: { type: 'string' } },
+          },
+        },
+      },
+    },
   };
 }

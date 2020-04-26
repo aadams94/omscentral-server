@@ -5,9 +5,9 @@ admin.initializeApp({
   credential: admin.credential.cert({
     privateKey: firebaseConfig.privateKey,
     clientEmail: firebaseConfig.clientEmail,
-    projectId: firebaseConfig.projectId
+    projectId: firebaseConfig.projectId,
   }),
-  databaseURL: firebaseConfig.databaseUrl
+  databaseURL: firebaseConfig.databaseUrl,
 });
 
 export const firebase = admin;

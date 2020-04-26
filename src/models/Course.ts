@@ -18,9 +18,9 @@ export class Course extends Domain {
       modelClass: CourseMetric,
       join: {
         from: `${Course.tableName}.id`,
-        to: `${CourseMetric.tableName}.course_id`
-      }
-    }
+        to: `${CourseMetric.tableName}.course_id`,
+      },
+    },
   };
 
   static jsonSchema = {
@@ -33,7 +33,7 @@ export class Course extends Domain {
       name: { type: 'string' },
       foundational: { type: 'boolean' },
       deprecated: { type: 'boolean' },
-      metric: CourseMetric.jsonSchema
-    }
+      metric: CourseMetric.jsonSchema,
+    },
   };
 }

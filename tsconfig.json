@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist",
     "allowJs": false,
-    "resolveJsonModule": true,
-    "lib": ["es2017", "dom", "esnext"],
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "jsx": "react"
+    "jsx": "react",
+    "lib": ["es2017", "dom", "esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "target": "es6",
+    "typeRoots": ["./node_modules/@types/", "./src/@types"]
   },
   "include": ["src", "database"]
 }

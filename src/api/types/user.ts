@@ -4,7 +4,7 @@ import {
   GraphQLNonNull,
   GraphQLString,
   GraphQLInputObjectType,
-  GraphQLFloat
+  GraphQLFloat,
 } from 'graphql';
 import { AuthProvider } from '../../enums';
 
@@ -21,34 +21,34 @@ export interface IUser {
 
 const userFields = {
   id: {
-    type: new GraphQLNonNull(GraphQLString)
+    type: new GraphQLNonNull(GraphQLString),
   },
   auth_provider: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   email: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   name: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   photo_url: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   program_id: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   specialization_id: {
-    type: GraphQLString
+    type: GraphQLString,
   },
   last_signed_in: {
-    type: GraphQLFloat
-  }
+    type: GraphQLFloat,
+  },
 };
 
 export const userInputType = new GraphQLInputObjectType({
   name: 'UserInputType',
-  fields: userFields
+  fields: userFields,
 });
 
 export const userType = new GraphQLObjectType({
@@ -56,12 +56,12 @@ export const userType = new GraphQLObjectType({
   fields: {
     ...userFields,
     created: {
-      type: new GraphQLNonNull(GraphQLFloat)
+      type: new GraphQLNonNull(GraphQLFloat),
     },
     updated: {
-      type: GraphQLFloat
-    }
-  }
+      type: GraphQLFloat,
+    },
+  },
 });
 
 export const userValidationType = object().keys({
@@ -72,5 +72,5 @@ export const userValidationType = object().keys({
   photo_url: string().allow(null),
   program_id: string().allow(null),
   specialization_id: string().allow(null),
-  last_signed_in: number()
+  last_signed_in: number(),
 });

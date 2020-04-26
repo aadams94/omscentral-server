@@ -9,8 +9,8 @@ export const deleteReview: GraphQLFieldConfig<any, IRequest> = {
   type: new GraphQLNonNull(reviewType),
   args: {
     id: {
-      type: new GraphQLNonNull(GraphQLString)
-    }
+      type: new GraphQLNonNull(GraphQLString),
+    },
   },
   resolve: async (root, args: { id: string }, req) => {
     const review = await fn.getReview(args.id).select('author_id');
@@ -23,5 +23,5 @@ export const deleteReview: GraphQLFieldConfig<any, IRequest> = {
     }
 
     return fn.deleteReview(args.id);
-  }
+  },
 };
