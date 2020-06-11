@@ -5,9 +5,6 @@ import { RequestHandler } from 'express';
 import knexConfig from '../../database/knexfile';
 import { sessionConfig } from '../config';
 
-/**
- * @see https://www.npmjs.com/package/express-session
- */
 export const middleware = (): RequestHandler => {
   const KnexSessionStore = connectSessionKnex(session);
 
@@ -15,7 +12,7 @@ export const middleware = (): RequestHandler => {
     knex: knex(knexConfig),
     tablename: 'omscentral_session',
     sidfieldname: 'id',
-    createtable: false,
+    createTable: false,
     clearInterval: sessionConfig.clearInterval,
   });
 
