@@ -1,6 +1,7 @@
 import morgan from 'morgan';
 import { memoize } from 'lodash';
 import { RequestHandler } from 'express';
+
 import { appConfig, morganConfig } from '../config';
 
 const getStatusColor = (statusCode: number): number => {

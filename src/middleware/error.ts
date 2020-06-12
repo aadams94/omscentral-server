@@ -1,11 +1,12 @@
-import Boom from 'boom';
+import { Boom, boomify } from '@hapi/boom';
 import { ErrorRequestHandler } from 'express';
+
 import { appConfig } from '../config';
 
 const parseError = (error: Error | Boom | any): Boom =>
   error instanceof Boom
     ? error
-    : Boom.boomify(new Error(error), {
+    : boomify(new Error(error), {
         statusCode: error.status || error.statusCode || 500,
       });
 

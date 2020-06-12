@@ -1,4 +1,4 @@
-import { notFound } from 'boom';
+import { notFound } from '@hapi/boom';
 
 import { QueryResolvers } from '../../generated/graphql';
 import { Course } from '../../models';

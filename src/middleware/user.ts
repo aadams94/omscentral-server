@@ -1,4 +1,5 @@
 import { RequestHandler } from 'express';
+
 import { firebase } from '../components';
 import { Request } from '../types';
 

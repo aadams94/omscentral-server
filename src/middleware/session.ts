@@ -2,6 +2,7 @@ import knex from 'knex';
 import session from 'express-session';
 import connectSessionKnex from 'connect-session-knex';
 import { RequestHandler } from 'express';
+
 import knexConfig from '../../database/knexfile';
 import { sessionConfig } from '../config';
 

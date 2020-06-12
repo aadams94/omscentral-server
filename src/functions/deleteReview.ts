@@ -1,4 +1,5 @@
-import { notFound } from 'boom';
+import { notFound } from '@hapi/boom';
+
 import { Review } from '../models';
 import { upsertReviewCourseMetrics } from './utils';
 import { getReview } from './getReview';

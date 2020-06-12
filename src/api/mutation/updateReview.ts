@@ -1,4 +1,4 @@
-import { notFound, forbidden, badRequest } from 'boom';
+import { notFound, forbidden, badRequest } from '@hapi/boom';
 
 import { MutationResolvers } from '../../generated/graphql';
 import { getReview, updateReview } from '../../functions';
