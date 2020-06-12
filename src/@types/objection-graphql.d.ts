@@ -4,7 +4,7 @@ declare module 'objection-graphql' {
 
   export function builder(): SchemaBuilder;
 
-  interface IModelOptions {
+  interface ModelOptions {
     listFieldName?: string;
     fieldName?: string;
   }
@@ -17,7 +17,7 @@ declare module 'objection-graphql' {
   };
 
   export class SchemaBuilder {
-    model(modelClass: any, opt?: IModelOptions): this;
+    model(modelClass: any, opt?: ModelOptions): this;
     extendWithMutations(mutations: GraphQLObjectType | Function): this;
     argFactory(factory: ArgFactory): this;
     build(): GraphQLSchema;

@@ -1,9 +1,9 @@
 import { PhaseFunction } from '../components';
-import * as fn from '../functions';
+import { upsertCourseMetrics } from '../functions';
 
 export const phase: PhaseFunction = async (app, next) => {
   try {
-    await fn.upsertCourseMetrics();
+    await upsertCourseMetrics();
     next();
   } catch (error) {
     next(error);

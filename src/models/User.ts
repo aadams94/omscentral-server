@@ -6,19 +6,20 @@ import { AuthProvider, Role } from '../enums';
 
 export class User extends withDates(Domain) {
   id: string;
-  auth_provider?: AuthProvider;
-  password_hash?: string;
-  password_salt?: string;
-  email?: string;
-  name?: string;
+  auth_provider!: AuthProvider;
+  password_hash: string | null;
+  password_salt: string | null;
+  email: string | null;
+  name: string | null;
   role: Role;
-  photo_url?: string;
+  photo_url: string | null;
   anonymous: boolean;
-  program_id?: string;
-  program?: Program;
-  specialization_id?: string;
-  specialization?: Specialization;
-  last_signed_in?: number;
+  program_id: string | null;
+  specialization_id: string | null;
+  last_signed_in: number | null;
+
+  program: Program | null;
+  specialization: Specialization | null;
 
   static tableName = 'omscentral_user';
 
@@ -43,14 +44,14 @@ export class User extends withDates(Domain) {
 
   static jsonSchema = {
     type: 'object',
-    required: ['id'],
+    required: ['id', 'auth_provider'],
     properties: {
       id: { type: 'string' },
-      auth_provider: { type: ['string', 'null'] },
+      auth_provider: { type: 'string' },
       password_hash: { type: ['string', 'null'] },
       password_salt: { type: ['string', 'null'] },
       email: { type: ['string', 'null'] },
-      name: { type: 'string' },
+      name: { type: ['string', 'null'] },
       role: { type: 'string' },
       photo_url: { type: ['string', 'null'] },
       anonymous: { type: 'boolean' },
@@ -63,4 +64,10 @@ export class User extends withDates(Domain) {
       updated: { type: ['number', 'null'] },
     },
   };
+
+  static eagerQuery = () =>
+    User.query().withGraphFetched(`[
+      program,
+      specialization.[program]
+    ]`);
 }

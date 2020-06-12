@@ -1,6 +1,6 @@
 type Format = 'combined' | 'common' | 'dev' | 'short' | 'tiny';
 
-export interface IMorganConfig {
+export interface MorganConfig {
   /**
    * HTTP request logging format. This is used only when NODE_ENV is non-local.
    *
@@ -9,6 +9,6 @@ export interface IMorganConfig {
   format: Format;
 }
 
-export const config: IMorganConfig = {
+export const config: MorganConfig = {
   format: (process.env.OMSCENTRAL_MORGAN_FORMAT || 'dev') as Format,
 };

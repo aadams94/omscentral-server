@@ -1,6 +1,6 @@
 import { Domain } from './Domain';
 
-interface IStats {
+interface Stats {
   mean: number;
   median: number;
   mode: number;
@@ -21,12 +21,12 @@ const statsSchema = {
 };
 
 export class CourseMetric extends Domain {
-  course_id: string;
-  reviews: {
+  course_id!: string;
+  reviews!: {
     count: number;
-    difficulty: IStats;
-    workload: IStats;
-    rating: IStats;
+    difficulty: Stats;
+    workload: Stats;
+    rating: Stats;
   };
 
   static tableName = 'omscentral_course_metric';

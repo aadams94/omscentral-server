@@ -1,4 +1,5 @@
 import pg from 'pg';
+
 import { PhaseFunction } from '../components';
 
 export const phase: PhaseFunction = (app, next) => {

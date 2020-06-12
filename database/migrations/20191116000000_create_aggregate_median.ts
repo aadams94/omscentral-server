@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { logger } from '../../src/components';
 
 exports.up = async (knex: Knex) => {
@@ -8,10 +9,10 @@ DROP FUNCTION IF EXISTS _final_median(anyarray);
 CREATE FUNCTION _final_median(anyarray) RETURNS float8 AS $$
   WITH q AS
   (
-     SELECT val
-     FROM unnest($1) val
-     WHERE VAL IS NOT NULL
-     ORDER BY 1
+    SELECT val
+    FROM unnest($1) val
+    WHERE VAL IS NOT NULL
+    ORDER BY 1
   ),
   cnt AS
   (

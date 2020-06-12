@@ -1,4 +1,4 @@
-import { PhaseFunction } from '../types';
+import { PhaseFunction } from '../interfaces';
 
 export class Phase {
   /**

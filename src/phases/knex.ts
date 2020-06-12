@@ -1,5 +1,6 @@
 import knex, { Config } from 'knex';
 import { Model } from 'objection';
+
 import { PhaseFunction } from '../components';
 import { postgresConfig } from '../config';
 

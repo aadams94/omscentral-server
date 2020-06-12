@@ -7,7 +7,7 @@ async function main(): Promise<void> {
   writeFileSync(
     `${__dirname}/../../../_courses.json`,
     JSON.stringify(courses, null, 2),
-    'utf8'
+    'utf8',
   );
 }
 

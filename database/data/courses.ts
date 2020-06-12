@@ -1,4 +1,5 @@
 import { PartialModelObject as PMO } from 'objection';
+
 import { Course } from '../../src/models';
 
 export const courses: PMO<Course>[] = [

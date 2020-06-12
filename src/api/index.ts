@@ -1,2 +1,2 @@
-export * from './schema';
-export * from './root';
+export { Mutation } from './mutation';
+export { Query } from './query';

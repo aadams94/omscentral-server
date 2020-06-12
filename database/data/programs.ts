@@ -1,4 +1,5 @@
 import { PartialModelObject as PMO } from 'objection';
+
 import { Program } from '../../src/models';
 
 export const programs: PMO<Program>[] = [

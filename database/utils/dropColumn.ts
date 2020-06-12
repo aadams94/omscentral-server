@@ -3,7 +3,7 @@ import Knex from 'knex';
 export async function dropColumn(
   knex: Knex,
   tableName: string,
-  columnName: string
+  columnName: string,
 ): Promise<void> {
   await knex.schema.raw(`
     ALTER TABLE ${tableName}

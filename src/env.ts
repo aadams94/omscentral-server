@@ -1,16 +1,13 @@
-import path from 'path';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
+import path from 'path';
 
-export default module.exports = (file: string = '.env') => {
+import { root } from './constants';
+
+export default module.exports = (file = '.env') => {
   dotenvExpand(
     dotenv.config({
-      path: path.join(
-        __dirname,
-        '..',
-        __dirname.includes('dist/') ? '..' : '',
-        file
-      ),
-    })
+      path: path.join(root, file),
+    }),
   );
 };

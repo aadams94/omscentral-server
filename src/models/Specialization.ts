@@ -2,15 +2,16 @@ import { Domain } from './Domain';
 import { Program } from './Program';
 
 export class Specialization extends Domain {
-  id: string;
-  program_id: string;
-  program?: Program;
-  name: string;
-  requirements: {
+  id!: string;
+  program_id!: string;
+  name!: string;
+  requirements!: {
     type: 'core' | 'elective' | 'required' | 'practicum';
     count: number;
     courses: string[];
   }[];
+
+  program!: Program;
 
   static tableName = 'omscentral_specialization';
 
@@ -29,7 +30,7 @@ export class Specialization extends Domain {
 
   static jsonSchema = {
     type: 'object',
-    required: ['id', 'name'],
+    required: ['id', 'name', 'requirements'],
     properties: {
       id: { type: 'string' },
       program_id: { type: 'string' },
@@ -49,4 +50,7 @@ export class Specialization extends Domain {
       },
     },
   };
+
+  static eagerQuery = () =>
+    Specialization.query().withGraphFetched('[program]');
 }

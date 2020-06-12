@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { configs as data } from '../data';
 import { Config as Model } from '../../src/models';
 

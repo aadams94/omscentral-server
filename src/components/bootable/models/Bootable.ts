@@ -1,7 +1,7 @@
-import { Application } from 'express';
+import { Express } from 'express';
+
 import { Phase } from './Phase';
-import { ILogger } from '../interfaces';
-import { BootFunction, PhaseFunction } from '../types';
+import { Logger, BootFunction, PhaseFunction } from '../interfaces';
 
 export class Bootable {
   /**
@@ -19,7 +19,7 @@ export class Bootable {
    * @param app Express application that is to become bootable.
    * @param logger Logger for logging what is happening during bootup.
    */
-  constructor(private app: Application, private logger: ILogger) {
+  constructor(private app: Express, private logger: Logger) {
     this.phases = [];
   }
 

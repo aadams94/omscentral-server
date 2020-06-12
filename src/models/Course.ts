@@ -2,13 +2,14 @@ import { Domain } from './Domain';
 import { CourseMetric } from './CourseMetric';
 
 export class Course extends Domain {
-  id: string;
-  department: string;
-  number: string;
-  name: string;
-  foundational: boolean;
-  deprecated: boolean;
-  metric?: CourseMetric;
+  id!: string;
+  department!: string;
+  number!: string;
+  name!: string;
+  foundational!: boolean;
+  deprecated!: boolean;
+
+  metric!: CourseMetric;
 
   static tableName = 'omscentral_course';
 
@@ -25,7 +26,14 @@ export class Course extends Domain {
 
   static jsonSchema = {
     type: 'object',
-    required: ['id', 'department', 'number', 'name', 'foundational'],
+    required: [
+      'id',
+      'department',
+      'number',
+      'name',
+      'foundational',
+      'deprecated',
+    ],
     properties: {
       id: { type: 'string' },
       department: { type: 'string' },
@@ -36,4 +44,6 @@ export class Course extends Domain {
       metric: CourseMetric.jsonSchema,
     },
   };
+
+  static eagerQuery = () => Course.query().withGraphFetched('[metric]');
 }

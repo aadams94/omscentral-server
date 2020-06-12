@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+
 import { firebaseConfig } from '../../config';
 
 admin.initializeApp({

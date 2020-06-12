@@ -1,8 +1,8 @@
 import { Domain } from './Domain';
 
 export class Config extends Domain {
-  id: string;
-  value: string;
+  id!: string;
+  value!: string;
 
   static tableName = 'omscentral_config';
 

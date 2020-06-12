@@ -1,20 +1,19 @@
-import { RequestHandler, Request } from 'express';
+import { RequestHandler } from 'express';
 import { firebase } from '../components';
-
-export interface IRequest extends Request {
-  userId?: string;
-}
+import { Request } from '../types';
 
 export const middleware = (): RequestHandler => async (
-  req: IRequest,
+  req: Request,
   res,
-  next
+  next,
 ) => {
-  req.userId = undefined;
+  req.userId = null;
+
   try {
     const idToken = req.headers.authorization;
     const { uid } = await firebase.auth().verifyIdToken(idToken);
     req.userId = uid;
   } catch {}
+
   next();
 };

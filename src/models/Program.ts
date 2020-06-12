@@ -1,9 +1,9 @@
 import { Domain } from './Domain';
 
 export class Program extends Domain {
-  id: string;
-  name: string;
-  url: string;
+  id!: string;
+  name!: string;
+  url!: string;
 
   static tableName = 'omscentral_program';
 

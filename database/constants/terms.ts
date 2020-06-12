@@ -124,5 +124,5 @@ export const terms = minify(
 <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>`,
   {
     collapseWhitespace: true,
-  }
+  },
 );

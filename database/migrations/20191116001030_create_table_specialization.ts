@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { createTable, dropTable } from '../utils';
 import { Specialization, Program } from '../../src/models';
 

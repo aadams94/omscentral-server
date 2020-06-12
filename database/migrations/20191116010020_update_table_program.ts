@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { programs as data } from '../data';
 import { Program as Model } from '../../src/models';
 

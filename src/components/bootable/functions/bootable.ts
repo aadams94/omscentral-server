@@ -1,7 +1,8 @@
-import { Application } from 'express';
+import { Express } from 'express';
 import { assign } from 'lodash';
+
 import { Bootable } from '../models';
-import { ILogger, IBootable } from '../interfaces';
+import { Logger, BootableExpress } from '../interfaces';
 
 /**
  * Decorator that injects bootable capabilities to an express app by adding
@@ -11,7 +12,7 @@ import { ILogger, IBootable } from '../interfaces';
  * @param logger
  * @returns Bootable express app.
  */
-export const withBootable = (app: Application, logger?: ILogger): IBootable => {
+export const bootable = (app: Express, logger?: Logger): BootableExpress => {
   const { boot, phase } = new Bootable(app, logger || console);
 
   return assign(app, {

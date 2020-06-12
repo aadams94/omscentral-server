@@ -2,11 +2,18 @@ import Boom from 'boom';
 import { ErrorRequestHandler } from 'express';
 import { appConfig } from '../config';
 
+const parseError = (error: Error | Boom | any): Boom =>
+  error instanceof Boom
+    ? error
+    : Boom.boomify(new Error(error), {
+        statusCode: error.status || error.statusCode || 500,
+      });
+
 export const middleware = (): ErrorRequestHandler => (
   error: Error | Boom | any,
   req,
   res,
-  next
+  next,
 ) => {
   if (!error) {
     return next();
@@ -23,10 +30,3 @@ export const middleware = (): ErrorRequestHandler => (
         : undefined,
   });
 };
-
-const parseError = (error: Error | Boom | any): Boom =>
-  error instanceof Boom
-    ? error
-    : Boom.boomify(new Error(error), {
-        statusCode: error.status || error.statusCode || 500,
-      });

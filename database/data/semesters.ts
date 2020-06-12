@@ -1,5 +1,6 @@
 import { PartialModelObject as PMO } from 'objection';
 import { chain, range, memoize } from 'lodash';
+
 import { Semester } from '../../src/models';
 import { Season } from '../../src/enums';
 import { unknownSemester } from '../../src/constants';
@@ -24,7 +25,7 @@ export const semesters: PMO<Semester>[] = chain(range(2014, 2021))
       year,
       season,
       name: `${getSeasonDisplayName(season)} ${year}`,
-    }))
+    })),
   )
   .flatten()
   .reverse()

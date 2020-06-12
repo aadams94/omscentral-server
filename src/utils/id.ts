@@ -41,7 +41,7 @@ class IdGenerator {
       id += characters.charAt(lastRandChars[i]);
     }
 
-    if (id.length != 20) {
+    if (id.length !== 20) {
       throw new Error('Length should be 20.');
     }
 

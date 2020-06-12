@@ -1,10 +1,10 @@
 import { init } from './utils';
-import * as fn from '../functions';
 import { logger } from '../components';
+import { upsertCourseMetrics } from '../functions';
 
 async function main(): Promise<void> {
   try {
-    await fn.upsertCourseMetrics();
+    await upsertCourseMetrics();
   } catch (error) {
     logger.error(error);
   }

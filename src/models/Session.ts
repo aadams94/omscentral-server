@@ -1,8 +1,8 @@
 import { Domain } from './Domain';
 
 export class Session extends Domain {
-  id: string;
-  sess: {
+  id!: string;
+  sess!: {
     cookie: {
       originalMaxAge: number;
       expires: string;
@@ -11,7 +11,7 @@ export class Session extends Domain {
     };
     [key: string]: any;
   };
-  expired: number;
+  expired!: number;
 
   static tableName = 'omscentral_session';
 

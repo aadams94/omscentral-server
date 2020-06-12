@@ -3,7 +3,7 @@ import { Model, ModelOptions, QueryContext, Pojo } from 'objection';
 export const withDates = (ModelToDecorate: typeof Model) =>
   class ModelWithDates extends ModelToDecorate {
     created: number;
-    updated?: number;
+    updated: number | null;
 
     static jsonSchema = {};
 

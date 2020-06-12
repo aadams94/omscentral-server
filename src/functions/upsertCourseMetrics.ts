@@ -1,43 +1,6 @@
 import { raw, PartialModelObject as PMO } from 'objection';
 import { Domain, Review, CourseMetric as CM } from '../models';
 
-export { upsertCourseMetrics };
-
-async function upsertCourseMetrics(): Promise<CM[]>;
-async function upsertCourseMetrics(id: string): Promise<CM[]>;
-async function upsertCourseMetrics(ids: string[]): Promise<CM[]>;
-async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
-  const ids = [].concat(idOrIds).filter(Boolean);
-
-  const fetchMetrics = Metric.query()
-    .from(Review.tableName)
-    .select('course_id')
-    .select(raw(`cast(count(id) as integer) as count`))
-    .modify((query) =>
-      ['difficulty', 'workload', 'rating'].map((col) =>
-        query
-          .select(raw(`avg(${col}) as ${col}_mean`))
-          .select(raw(`median(${col}) as ${col}_median`))
-          .select(raw(`mode() within group (order by ${col}) as ${col}_mode`))
-          .select(raw(`min(${col}) as ${col}_min`))
-          .select(raw(`max(${col}) as ${col}_max`))
-      )
-    )
-    .modify((query) => ids.length && query.whereIn('course_id', ids))
-    .groupBy('course_id');
-
-  const [metrics] = await Promise.all([
-    fetchMetrics,
-    CM.query()
-      .delete()
-      .modify((query) => ids.length && query.whereIn('course_id', ids)),
-  ]);
-
-  return CM.query().upsertGraphAndFetch(metrics.map(toCourseMetric), {
-    insertMissing: true,
-  });
-}
-
 class Metric extends Domain {
   static tableName = '_virtual';
 
@@ -87,3 +50,40 @@ const toCourseMetric = (metric: Metric): PMO<CM> => ({
     },
   },
 });
+
+async function upsertCourseMetrics(): Promise<CM[]>;
+async function upsertCourseMetrics(id: string): Promise<CM[]>;
+async function upsertCourseMetrics(ids: string[]): Promise<CM[]>;
+async function upsertCourseMetrics(idOrIds?: string | string[]): Promise<CM[]> {
+  const ids = [].concat(idOrIds).filter(Boolean);
+
+  const fetchMetrics = Metric.query()
+    .from(Review.tableName)
+    .select('course_id')
+    .select(raw(`cast(count(id) as integer) as count`))
+    .modify((query) =>
+      ['difficulty', 'workload', 'rating'].map((col) =>
+        query
+          .select(raw(`avg(${col}) as ${col}_mean`))
+          .select(raw(`median(${col}) as ${col}_median`))
+          .select(raw(`mode() within group (order by ${col}) as ${col}_mode`))
+          .select(raw(`min(${col}) as ${col}_min`))
+          .select(raw(`max(${col}) as ${col}_max`)),
+      ),
+    )
+    .modify((query) => ids.length && query.whereIn('course_id', ids))
+    .groupBy('course_id');
+
+  const [metrics] = await Promise.all([
+    fetchMetrics,
+    CM.query()
+      .delete()
+      .modify((query) => ids.length && query.whereIn('course_id', ids)),
+  ]);
+
+  return CM.query().upsertGraphAndFetch(metrics.map(toCourseMetric), {
+    insertMissing: true,
+  });
+}
+
+export { upsertCourseMetrics };

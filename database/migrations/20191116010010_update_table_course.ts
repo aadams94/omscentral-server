@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { courses as data } from '../data';
 import { Course as Model } from '../../src/models';
 

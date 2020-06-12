@@ -1,4 +1,5 @@
 import { PartialModelObject as PMO } from 'objection';
+
 import { Specialization } from '../../src/models';
 
 export const specializations: PMO<Specialization>[] = [

@@ -2,10 +2,10 @@ import { Domain } from './Domain';
 import { Season } from '../enums';
 
 export class Semester extends Domain {
-  id: string;
-  year: number;
-  season: Season;
-  name: string;
+  id!: string;
+  year!: number;
+  season!: Season;
+  name!: string;
 
   static tableName = 'omscentral_semester';
 

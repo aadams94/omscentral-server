@@ -1,17 +1,19 @@
-import express from 'express';
-import compression from 'compression';
 import bodyParser from 'body-parser';
+import compression from 'compression';
+import express from 'express';
 import lusca from 'lusca';
+import path from 'path';
 
-import { withBootable } from './components';
+import { root } from './constants';
+import { bootable } from './components';
 import { logger } from './components';
 import * as phases from './phases';
 import * as middleware from './middleware';
 
-const app = withBootable(express(), logger);
+export const app = bootable(express(), logger);
 
-app.phase(phases.createServer, 'create-server');
 app.phase(phases.processEvents, 'process-events');
+app.phase(phases.createServer, 'create-server');
 app.phase(phases.knex, 'knex');
 app.phase(phases.postgres, 'postgres');
 app.phase(phases.upsertCourseMetrics, 'upsert-course-metrics');
@@ -31,9 +33,9 @@ app.use(middleware.morgan());
 // app.use(middleware.session());
 app.use(middleware.user());
 
-app.use('/graphql', middleware.graphql());
-app.use('*', (req, res) => res.status(400).send('Use /graphql endpoint.'));
+const schema = path.join(root, 'src', 'api', 'schema.graphql');
+
+app.use('/graphql', middleware.graphql(schema));
+app.use('*', (_, res) => res.status(400).send('Use /graphql endpoint.'));
 
 app.use(middleware.error());
-
-export { app };

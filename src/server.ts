@@ -1,6 +1,8 @@
 require('./env')();
 
+import { AddressInfo } from 'net';
 import { Server } from 'http';
+
 import { app } from './app';
 import { logger } from './components';
 
@@ -13,7 +15,7 @@ app.boot((error?: Error) => {
   const port: number = app.get('port');
 
   server.listen(port, () => {
-    logger.info(`Listening on port ${port}...`);
-    logger.info('Press CTRL-C to stop.');
+    const address = server.address() as AddressInfo;
+    logger.info(`🚀 Server listening on port ${address.port} ...`);
   });
 });

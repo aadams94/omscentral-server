@@ -8,21 +8,13 @@ const logger = createLogger({
     }),
     format.errors({ stack: true }),
     format.splat(),
-    format.json()
+    format.json(),
   ),
-  // defaultMeta: {
-  //   service: appConfig.name
-  // },
-  // transports: [
-  //   new transports.File({ filename: 'error.log', level: 'error' }),
-  //   new transports.File({ filename: 'combined.log' })
-  // ]
+  transports: [
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  ],
 });
-
-logger.add(
-  new transports.Console({
-    format: format.combine(format.colorize(), format.simple()),
-  })
-);
 
 export { logger };

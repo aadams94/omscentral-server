@@ -1,7 +1,9 @@
-import { Application } from 'express';
-import { PhaseFunction, BootFunction } from '../types';
+import { Express } from 'express';
 
-export interface IBootable extends Application {
+import { BootFunction } from './BootFunction';
+import { PhaseFunction } from './PhaseFunction';
+
+export interface BootableExpress extends Express {
   /**
    * Registers a phase.
    */

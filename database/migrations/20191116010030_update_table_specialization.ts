@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { specializations as data } from '../data';
 import { Specialization as Model } from '../../src/models';
 

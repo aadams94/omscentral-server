@@ -1,7 +1,7 @@
-export interface IGraphQLConfig {
+export interface GraphQLConfig {
   inspector: boolean;
 }
 
-export const config: IGraphQLConfig = {
+export const config: GraphQLConfig = {
   inspector: Boolean(process.env.OMSCENTRAL_GRAPHQL_INSPECTOR),
 };

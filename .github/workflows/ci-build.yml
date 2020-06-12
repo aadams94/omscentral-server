@@ -22,7 +22,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm install
-      - name: Build
-        run: npm run build
+      - name: Generate graphql artifacts
+        run: npm run generate
       - name: Lint
-        run: npm run tslint
+        run: npm run lint
+      - name: Build
+        run: npm run build:ts && npm run tslint

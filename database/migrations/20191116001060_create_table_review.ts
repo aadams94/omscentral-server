@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { createTable, dropTable } from '../utils';
 import { Review, User, Course, Semester } from '../../src/models';
 

@@ -6,28 +6,29 @@ import { Semester } from './Semester';
 import { Difficulty, Rating } from '../enums';
 
 export class Review extends withDates(Domain) {
-  id: string;
-  author_id: string;
-  author?: User;
-  course_id: string;
-  course?: Course;
-  semester_id: string;
-  semester?: Semester;
-  difficulty?: Difficulty;
-  rating?: Rating;
-  workload?: number;
-  body?: string;
-  meta?: {
+  id!: string;
+  author_id!: string;
+  course_id!: string;
+  semester_id!: string;
+  difficulty: Difficulty | null;
+  rating: Rating | null;
+  workload: number | null;
+  body: string | null;
+  meta: {
     extraCredit: boolean;
     firstCourse: boolean;
     frontLoad: boolean;
-    groupProjects?: number;
-    moneySpent?: number;
-    proctortrack: boolean;
-    program?: number;
-    projects?: number;
-    tests?: number;
-  };
+    groupProjects: number | null;
+    moneySpent: number | null;
+    proctortrack: boolean | null;
+    program: number | null;
+    projects: number | null;
+    tests: number | null;
+  } | null;
+
+  author!: User;
+  course!: Course;
+  semester!: Semester;
 
   static tableName = 'omscentral_review';
 
@@ -79,4 +80,11 @@ export class Review extends withDates(Domain) {
       updated: { type: ['number', 'null'] },
     },
   };
+
+  static eagerQuery = () =>
+    Review.query().withGraphFetched(`[
+      author.[program,specialization.[program]],
+      course.[metric],
+      semester
+    ]`);
 }

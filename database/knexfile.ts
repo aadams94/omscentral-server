@@ -5,6 +5,7 @@ require('../src/env')(argv.env ? `.env.${argv.env}` : '.env');
 import pg from 'pg';
 import path from 'path';
 import { Config } from 'knex';
+
 import { postgresConfig } from '../src/config';
 import { Migration } from '../src/models';
 

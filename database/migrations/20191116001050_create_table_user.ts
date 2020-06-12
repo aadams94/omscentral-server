@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { createTable, dropTable } from '../utils';
 import { User, Program, Specialization } from '../../src/models';
 import { AuthProvider, Role } from '../../src/enums';

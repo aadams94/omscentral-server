@@ -1,6 +1,6 @@
 const hourToMs = (hours: number): number => hours * 60 * 60 * 1000;
 
-export interface ISessionConfig {
+export interface SessionConfig {
   /**
    * The secret used to sign the session ID cookie.
    *
@@ -23,10 +23,10 @@ export interface ISessionConfig {
   clearInterval: number;
 }
 
-export const config: ISessionConfig = {
+export const config: SessionConfig = {
   secret: process.env.OMSCENTRAL_SESSION_SECRET || 'shhhhhhhhh',
   maxAge: hourToMs(Number(process.env.OMSCENTRAL_SESSION_MAX_AGE) || 8),
   clearInterval: hourToMs(
-    Number(process.env.OMSCENTRAL_SESSION_CLEAR_INTERVAL) || 1
+    Number(process.env.OMSCENTRAL_SESSION_CLEAR_INTERVAL) || 1,
   ),
 };

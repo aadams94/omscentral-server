@@ -1,0 +1,21 @@
+overwrite: true
+schema: src/api/schema.graphql
+documents: null
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+generates:
+  src/generated/graphql.ts:
+    config:
+      contextType: ../types#Context
+      useIndexSignature: true
+    plugins:
+      - typescript
+      - typescript-resolvers
+      - typescript-document-nodes
+    hooks:
+      afterAllFileWrite:
+        - eslint --fix
+  graphql.schema.json:
+    plugins:
+      - introspection

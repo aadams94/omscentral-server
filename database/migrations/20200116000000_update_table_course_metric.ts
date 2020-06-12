@@ -1,4 +1,5 @@
 import Knex from 'knex';
+
 import { dropTable, dropColumn, addColumn } from '../utils';
 import { CourseMetric } from '../../src/models';
 

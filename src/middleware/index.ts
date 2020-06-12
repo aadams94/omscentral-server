@@ -3,4 +3,4 @@ export { middleware as error } from './error';
 export { middleware as graphql } from './graphql';
 export { middleware as morgan } from './morgan';
 export { middleware as session } from './session';
-export { middleware as user, IRequest } from './user';
+export { middleware as user } from './user';

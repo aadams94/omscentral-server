@@ -1,1 +1,1 @@
-export * from './withBootable';
+export * from './bootable';
