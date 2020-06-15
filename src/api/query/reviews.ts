@@ -5,7 +5,7 @@ type Resolver = QueryResolvers['reviews'];
 
 export const resolver: Resolver = (
   _,
-  { order_by_desc, offset, limit, course_id, author_id },
+  { order_by_desc, offset, limit, course_id, author_id, semester_ids },
 ) =>
   Review.eagerQuery()
     .modify((qb) =>
@@ -14,4 +14,7 @@ export const resolver: Resolver = (
     .offset(offset)
     .limit(limit)
     .modify((qb) => course_id && qb.where('course_id', course_id))
-    .modify((qb) => author_id && qb.where('author_id', author_id));
+    .modify((qb) => author_id && qb.where('author_id', author_id))
+    .modify(
+      (qb) => semester_ids.length && qb.whereIn('semester_id', semester_ids),
+    );
