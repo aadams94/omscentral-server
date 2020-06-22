@@ -13,8 +13,10 @@ Node.js express server serving `@omscentral/client`.
 
 ## Getting Started
 
-```
-npm install
+```sh
+rm -rf node_modules
+npm ci
+npm run generate
 ```
 
 ## Postgres
@@ -24,10 +26,7 @@ The server requires a database connection. After installing Postgres, create a l
 ```sql
 CREATE DATABASE omscentral_scratch;
 CREATE USER omscentral WITH PASSWORD 'password';
-GRANT CONNECT ON DATABASE omscentral_scratch TO omscentral;
-GRANT USAGE ON SCHEMA public TO omscentral;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO omscentral;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO omscentral;
+ALTER USER omscentral WITH SUPERUSER;
 ```
 
 ## Firebase
@@ -36,9 +35,9 @@ If you haven't already, complete the instructions in [@omscentral/client](https:
 
 ## Environment Variables
 
-First, copy the stock env var file.
+First, copy the stock env var file:
 
-```
+```sh
 cp .env.example .env
 ```
 
@@ -63,21 +62,19 @@ Then, complete `.env` based on the following expectations:
 | OMSCENTRAL_FIREBASE_DATABASE_URL  | from firebase private key json                                                      |
 | OMSCENTRAL_POSTGRES_CONNECTION    | postgres connection string                                                          |
 
-Note that when `NODE_ENV` is not `"production"`, CORS check is skipped and `OMSCENTRAL_CORS_WHITELIST` is ignored.
-
 ## Migrations
 
 Before starting the server, make sure the migrations are up to date:
 
-```
+```sh
 npm run build && npm run migrate:latest
 ```
 
-If this fails, check the `OMSCENTRAL_POSTGRES_CONNECTION` environment variable and make sure it's configured correctly.
+If this fails, check the `OMSCENTRAL_POSTGRES_CONNECTION` environment variable and make sure it's configured correctly. Including `DEBUG=knex/*` before the `npm run migrate:latest` command will print debugging information to the console.
 
 ## Start
 
-```
+```sh
 npm run watch
 ```
 
